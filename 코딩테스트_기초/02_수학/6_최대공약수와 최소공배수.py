@@ -6,7 +6,8 @@ def gcd(x, y):
         return x
     else:
         return gcd(y, x % y)
-
+def lcm(x, y):
+    return x * y / gcd(x, y)
 a, b = map(int, input().split())
 # 최대 공약수 = g
 g = gcd(a, b)

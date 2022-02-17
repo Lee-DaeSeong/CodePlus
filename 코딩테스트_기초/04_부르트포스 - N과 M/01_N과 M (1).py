@@ -8,3 +8,22 @@ n, m = map(int, input().split())
 # for i in itertools.permutations(range(1, n+1), m):
 #     print(*i)
 
+c=[False] * (n+1)
+a=[0]*m
+
+def go(idx, n, m):
+    if idx == m:
+        # print(*a)
+        return
+
+    for i in range(1, n+1):
+        # 해당 수 선택 됨
+        if c[i]:
+            continue
+        c[i] = True     # 사용 o
+        a[idx] = i
+        print(*a)
+        go(idx+1, n, m) # 재귀 호출
+        c[i] = False    # 사용 x
+
+go(0, n, m)

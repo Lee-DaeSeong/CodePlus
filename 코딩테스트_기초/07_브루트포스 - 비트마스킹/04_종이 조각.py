@@ -22,6 +22,7 @@ for s in range(1<<(n*m)):
             else:
                 sum += cur
                 cur = 0
+        # 가로로 끝나는 경우가 있기 때문에 sum에 cur을 더해줌
         sum += cur
 
     # 세로 계산

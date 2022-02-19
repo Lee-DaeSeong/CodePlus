@@ -6,7 +6,7 @@ a = [list(map(int,list(input()))) for _ in range(n)]
 ans = 0
 for s in range(1<<(n*m)):
     sum = 0
-    print(s, bin(s))
+
     # 가로 합 계산
     for i in range(n):
         cur = 0

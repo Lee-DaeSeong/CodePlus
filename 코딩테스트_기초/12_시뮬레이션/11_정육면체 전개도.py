@@ -35,6 +35,7 @@ cubes = [
      "0011"]
 ]
 
+
 def mirror(b):
     ans = []
     for i in range(len(b)):
@@ -42,36 +43,39 @@ def mirror(b):
         ans.append(temp)
     return ans
 
+
 def rotate(b):
     ans = [''] * len(b[0])
     for j in range(len(b[0])):
-        for i in range(len(b)-1, -1, -1):
+        for i in range(len(b) - 1, -1, -1):
             ans[j] += b[i][j]
     return ans
+
 
 def check(a, b, x, y):
     n = len(a)
     for i in range(len(b)):
         for j in range(len(b[0])):
-                nx = x+i
-                ny = y+j
-                if 0 <= nx < n and 0 <= ny < n:
-                    if b[i][j] == '0':
-                        if a[nx][ny] == 1:
-                            return False
-                    elif  b[i][j] == '1':
-                        if a[nx][ny] == 0:
-                            return False
-                else:
-                    return False
+            nx = x + i
+            ny = y + j
+            if 0 <= nx < n and 0 <= ny < n:
+                if b[i][j] == '0':
+                    if a[nx][ny] == 1:
+                        return False
+                elif b[i][j] == '1':
+                    if a[nx][ny] == 0:
+                        return False
+            else:
+                return False
     return True
+
 
 t = 3
 for _ in range(t):
     n = 6
     a = []
     for i in range(n):
-        a.append(list(map(int,input().split())))
+        a.append(list(map(int, input().split())))
     ans = False
     for c in cubes:
         cube = [row[:] for row in c]

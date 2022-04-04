@@ -7,11 +7,11 @@ import collections
 def dfs(idx, sum):
     global ans
 
-    if idx == len(nums):
+    # 부분집합 -> 모든 경우를 살펴보아야 함
+    if idx == n:
+        if sum == target:
+            ans += 1
         return
-
-    if sum + nums[idx] == target:
-        ans += 1
 
     dfs(idx + 1, sum + nums[idx])
     dfs(idx + 1, sum)
@@ -19,6 +19,11 @@ def dfs(idx, sum):
 
 n, target = map(int, input().split())
 nums = list(map(int, sys.stdin.readline().rstrip().split()))
+
 ans = 0
 dfs(0, 0)
+
+# target이 0일 때 공집합 예외 처리
+if target == 0:
+    ans -= 1
 print(ans)

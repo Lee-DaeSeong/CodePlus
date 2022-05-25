@@ -1,4 +1,4 @@
-# https://www.acmicpc.net/problem/17141
+# https://www.acmicpc.net/problem/17142
 
 import collections
 import itertools
@@ -11,7 +11,7 @@ n, m = map(int, input().split())
 virus = []
 maps = []
 blank = 0
-
+v = 0
 for i in range(n):
     temp = list(map(int, input().split()))
     for j in range(len(temp)):
@@ -23,6 +23,7 @@ for i in range(n):
             virus.append([i, j])
             temp[j] = 0
             blank += 1
+            v += 1
     maps.append(temp)
 
 dx = [-1, 1, 0, 0]
@@ -42,7 +43,8 @@ def bfs():
             if 0 <= nx < n and 0 <= ny < n and visited[nx][ny] == -1 and maps[nx][ny] == 0:
                 q.append([nx, ny])
                 visited[nx][ny] = visited[x][y] + 1
-                ret = max(ret, visited[nx][ny])
+                if [nx, ny] not in virus:
+                    ret = max(ret, visited[nx][ny])
                 cnt += 1
 
     if blank != cnt + m:
@@ -67,3 +69,4 @@ if ans == math.inf:
     print(-1)
 else:
     print(ans)
+
